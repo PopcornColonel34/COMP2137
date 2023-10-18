@@ -33,7 +33,7 @@ IP_address=$(hostname --ip-address)
 #Show Default Gateway Information
 GATEWAY_ip=$(ip route | awk '/default/ {print $3}')
 #DNS Server details
-DNS_servers=$(cat /etc/resolv.conf | grep 'nameserver' | awk '{print $2}'
+DNS_servers=$(cat /etc/resolv.conf | grep 'nameserver' | awk '{print $2}')
 #Display Interface information
 INTERFACE_names=$(ip link | awk -F ": " '{print $2}' | awk '{print $1}')
 
