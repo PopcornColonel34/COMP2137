@@ -1,23 +1,23 @@
 #!/bin/bash
 # Name: Philip Scheirich
-# Course: COMP2137 - Linux Automation
+# Course ID: COMP2137 - Linux Automation
 # Professor: D. Simpson
-# Date: October 18th, 2023
+# Date: October 19th, 2023
 
-# Source to get OS information
+#Source to get OS information
 source /etc/os-release
-# Set the variable for the user
+#Set the variable for the user
 myname=`whoami`
-# Get the current time and date
+#Get the current time and date
 TIME=$(date +"%T")
 #Get the hostname
-HOSTNAME= $(hostname)
+HOSTNAME=$(hostname)
 #Extract OS info from variables in /etc/os-releases
 DISTRO="$NAME $VERSION"
 #Show system uptime
 UPTIME=$(uptime -p)
 #Find specific CPU information
-CPU_Details=$(lscpu | grep "Model name")
+CPU_Details=$(cat /proc/cpuinfo)
 #Find current CPU speed
 CPU_Speed=$(lscpu -e=+MHZ)
 #Find current amount of free RAM
@@ -26,9 +26,9 @@ RAM_Size=$(free -h | awk '/^Mem:/ {print $2}')
 DISK_info=$(lsblk -d -o NAME,MODEL,SIZE | grep -v "NAME")
 #Video card information
 VIDEO_card=$(lspci | grep -i "VGA")
-# Display FQDN information
+#Display FQDN information
 FQDN_info=$(hostname --fqdn)
-# Show Host IP address
+#Show Host IP address
 IP_address=$(hostname --ip-address)
 #Show Default Gateway Information
 GATEWAY_ip=$(ip route | awk '/default/ {print $3}')
@@ -36,6 +36,10 @@ GATEWAY_ip=$(ip route | awk '/default/ {print $3}')
 DNS_servers=$(cat /etc/resolv.conf | grep 'nameserver' | awk '{print $2}')
 #Display Interface information
 INTERFACE_names=$(ip link | awk -F ": " '{print $2}' | awk '{print $1}')
+INTERFACE="ens33"
+#Display IP address in CIDR format
+IP_cidr1=$(ip -o -4 addr show dev ens33 | awk '{print $4}')
+IP_cidr2=$(ip -o -4 addr show dev ens34 | awk '{print $4}')
 #Show who is currently logged into the system
 LOGGED_in=$(who)
 #Amount of disk space currently available
@@ -48,7 +52,7 @@ LOAD_averages=$(uptime | awk -F 'load average: ' '{print $2}')
 #Display memory allocation in MB
 MEMORY_info=$(free -m)
 #Display the listening network ports
-LISTEN_ports=$(netstat -tuln)
+LISTEN_ports=$(ss -tuln)
 #Display UFW rules
 UFW_rules=$(ufw status)
 
@@ -64,15 +68,19 @@ Uptime: $UPTIME
 
 HARDWARE INFORMATION
 ====================
-CPU: 
+All CPU Information: 
 $CPU_Details
-Speed: 
+
+CPU Speed: 
 $CPU_Speed
+
 RAM: 
 $RAM_Size
+
 Disks:
 $DISK_info
-Video:
+
+Video Card:
 $VIDEO_card
 
 NETWORK INFORMATION
@@ -80,31 +88,49 @@ NETWORK INFORMATION
 
 FQDN:
 $FQDN_info
+
 Host Address:
 $IP_address
+
 Gateway IP:
 $GATEWAY_ip
+
 DNS Server:
 $DNS_servers
-InterfaceName:
+
+Interface Names:
 $INTERFACE_names
+
 IP Address: IP Address in CIDR format
+ens33:
+$IP_cidr1
+ens34:
+$IP_cidr2
+
 
 SYSTEM STATUS
 =============
 
 Users Logged In:
 $LOGGED_in
+
 Disk Space:
 $DISK_space
+
 Process Count:
 $PROCESS_count
+
 Load Averages:
 $LOAD_averages
+
 Memory Allocation:
 $MEMORY_info
+
 Listening Network Ports:
 $LISTEN_ports
+
 UFW Rules:
 $UFW_rules
+
+That is all of the information, thank you for viewing my script results.
 "
