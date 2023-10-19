@@ -68,19 +68,19 @@ Uptime: $UPTIME
 
 HARDWARE INFORMATION
 ====================
-All CPU Information: 
+All CPU INFORMATION: 
 $CPU_Details
 
-CPU Speed: 
+CPU SPEED: 
 $CPU_Speed
 
 RAM: 
 $RAM_Size
 
-Disks:
+DISKS:
 $DISK_info
 
-Video Card:
+VIDEO CARD:
 $VIDEO_card
 
 NETWORK INFORMATION
@@ -89,19 +89,19 @@ NETWORK INFORMATION
 FQDN:
 $FQDN_info
 
-Host Address:
+HOST ADDRESS:
 $IP_address
 
-Gateway IP:
+GATEWAY IP:
 $GATEWAY_ip
 
-DNS Server:
+DNS SERVER:
 $DNS_servers
 
-Interface Names:
+INTERFACE NAMES:
 $INTERFACE_names
 
-IP Address: IP Address in CIDR format
+IP Address: IP Address in CIDR FORMAT
 ens33:
 $IP_cidr1
 ens34:
@@ -111,25 +111,25 @@ $IP_cidr2
 SYSTEM STATUS
 =============
 
-Users Logged In:
+USERS LOGGED IN:
 $LOGGED_in
 
-Disk Space:
+DISK SPACE:
 $DISK_space
 
-Process Count:
+PROCESS COUNT:
 $PROCESS_count
 
-Load Averages:
+LOAD AVERAGES:
 $LOAD_averages
 
-Memory Allocation:
+MEMORY ALLOCATION:
 $MEMORY_info
 
-Listening Network Ports:
+LISTENING NETWORK PORTS:
 $LISTEN_ports
 
-UFW Rules:
+UFW RULES:
 $UFW_rules
 
 That is all of the information. 
