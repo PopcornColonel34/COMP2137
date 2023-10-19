@@ -54,7 +54,7 @@ MEMORY_info=$(free -m)
 #Display the listening network ports
 LISTEN_ports=$(ss -tuln)
 #Display UFW rules
-UFW_rules=$(ufw status)
+UFW_rules=$(sudo ufw status)
 
 
 echo "
@@ -132,5 +132,6 @@ $LISTEN_ports
 UFW Rules:
 $UFW_rules
 
-That is all of the information, thank you for viewing my script results.
+That is all of the information. 
+Thank you for viewing my script results.
 "
