@@ -4,4 +4,4 @@
 # Professor: D. Simpson
 # Date: November 1, 2023
 
-echo "this is my new script test"
+echo "this is my new script test. I have edited it again to confirm"
